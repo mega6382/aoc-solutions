@@ -42,9 +42,3 @@ function ($a, $b)
 $result = array_search($theMinuteThatGuardMostSleptAt, $allGuardsAndTheirSleepingTimes);
 var_dump($result * array_keys($theMinuteThatGuardMostSleptAt, max($theMinuteThatGuardMostSleptAt)) [0]);
 exit;
-$result = array_search($theMinuteThatGuardMostSleptAt, $allGuardsAndTheirSleepingTimes);
-
-// var_dump($theMinuteThatGuardMostSleptAt);exit;
-
-var_dump($result * array_keys($theMinuteThatGuardMostSleptAt, max($theMinuteThatGuardMostSleptAt)) [0]);
-exit;
