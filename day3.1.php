@@ -4,38 +4,39 @@ $claims = ['#1 @ 16,576: 17x14','#2 @ 94,483: 29x26','#3 @ 927,101: 19x22','#4 @
 
 $allPlacements = [];
 
-
 foreach($claims as $claim)
 {
-	$dimensionString = strstr($claim, '@');
-	$dimensions = explode(':', $dimensionString);
-	$placements = explode(',', trim(str_replace('@', '', $dimensions[0])));
-	$sizes = explode('x', trim($dimensions[1]));
-	
-	for($l=1;$l<=$sizes[0];$l++)
-	{	
-		for($t=1;$t<=$sizes[1];$t++)
-		{
-			$x = $placements[0]+$l;
-			$y = $placements[1]+$t;
-			$arrayKey = $x . ',' . $y;
-			if(array_key_exists($arrayKey, $allPlacements))
-			{
-				$allPlacements[$arrayKey]++;
-			}else
-			{
-				$allPlacements[$arrayKey] = 1;
-			}
-		}
-	}
+    $dimensionString = strstr($claim, '@');
+    $dimensions = explode(':', $dimensionString);
+    $placements = explode(',', trim(str_replace('@', '', $dimensions[0])));
+    $sizes = explode('x', trim($dimensions[1]));
+    for ($l = 1; $l <= $sizes[0]; $l++)
+    {
+        for ($t = 1; $t <= $sizes[1]; $t++)
+        {
+            $x = $placements[0] + $l;
+            $y = $placements[1] + $t;
+            $arrayKey = $x . ',' . $y;
+            if (array_key_exists($arrayKey, $allPlacements))
+            {
+                $allPlacements[$arrayKey]++;
+            }
+            else
+            {
+                $allPlacements[$arrayKey] = 1;
+            }
+        }
+    }
 }
 
 $samePlacementCount = 0;
-foreach ($allPlacements as $singlePlacement) {
-    if($singlePlacement > 1) {
-         $samePlacementCount++;
+
+foreach($allPlacements as $singlePlacement)
+{
+    if ($singlePlacement > 1)
+    {
+        $samePlacementCount++;
     }
 }
 
 var_dump($samePlacementCount);
-

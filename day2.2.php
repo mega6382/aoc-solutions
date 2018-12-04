@@ -7,27 +7,28 @@ $count = 0;
 
 foreach($ids as $id)
 {
-	$idArray = str_split($id);
-	foreach($ids as $cId)
-	{
-		$count = 0;
-		$cIdArray = str_split($cId);
-		foreach($idArray as $key => $value)
-		{
-			if($value != $cIdArray[$key])
-			{
-				$count++;
-			}
-			if($count > 1)
-			{
-				break;
-			}
-		}
-		if($count == 1)
-		{
-			var_dump($id, $cId);exit;
-		}
-	}
+    $idArray = str_split($id);
+    foreach($ids as $cId)
+    {
+        $count = 0;
+        $cIdArray = str_split($cId);
+        foreach($idArray as $key => $value)
+        {
+            if ($value != $cIdArray[$key])
+            {
+                $count++;
+            }
+
+            if ($count > 1)
+            {
+                break;
+            }
+        }
+
+        if ($count == 1)
+        {
+            var_dump($id, $cId);
+            exit;
+        }
+    }
 }
-
-
