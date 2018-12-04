@@ -40,8 +40,5 @@ function ($a, $b)
     return @array_sum($a) > @array_sum($b) ? $a : $b;
 });
 $result = array_search($theMinuteThatGuardMostSleptAt, $allGuardsAndTheirSleepingTimes);
-
-// var_dump($theMinuteThatGuardMostSleptAt);exit;
-
 var_dump($result * array_keys($theMinuteThatGuardMostSleptAt, max($theMinuteThatGuardMostSleptAt)) [0]);
 exit;
