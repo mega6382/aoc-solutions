@@ -34,26 +34,25 @@ let BothCharsAreTheSameButWithDifferentCase = (
   return false;
 };
 
-let removeDuplicates = (data: string[]) => {
+let removeDuplicates = (data: string[]): string [] => {
+    let returnResult = data; 
   for (const { item, index } of toItemIndexes(data)) {
     if (BothCharsAreTheSameButWithDifferentCase(item, data[index - 1])) {
-      delete result[index];
-      delete result[index - 1];
+      delete returnResult[index];
+      delete returnResult[index - 1];
       matched = true;
     }
   }
+  return returnResult;
 };
 
 let data = processInput(input);
-
-let result = data;
 
 let matched = false;
 
 do {
   matched = false;
-  removeDuplicates(result);
-  result = result.filter(Boolean);
+  data = removeDuplicates(data).filter(Boolean);
 } while (matched);
 
-console.log(result.length);
+console.log(data.length);

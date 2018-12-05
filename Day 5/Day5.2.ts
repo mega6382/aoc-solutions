@@ -46,14 +46,16 @@ let BothCharsAreTheSameButWithDifferentCase = (
   return false;
 };
 
-let removeDuplicates = (pdata: string[]) => {
-  for (const { item, index } of toItemIndexes(pdata)) {
-    if (BothCharsAreTheSameButWithDifferentCase(item, pdata[index - 1])) {
-      delete result[index];
-      delete result[index - 1];
+let removeDuplicates = (data: string[]): string[] => {
+  let returnResult = data;
+  for (const { item, index } of toItemIndexes(data)) {
+    if (BothCharsAreTheSameButWithDifferentCase(item, data[index - 1])) {
+      delete returnResult[index];
+      delete returnResult[index - 1];
       matched = true;
     }
   }
+  return returnResult;
 };
 let removeAllOccurrencesOfValue = (array: string[], value: string) => {
   return array.filter(function(element) {
@@ -64,11 +66,12 @@ let removeAllOccurrencesOfValue = (array: string[], value: string) => {
   });
 };
 
-let processDataAfterRemovingSameUnitsOfSingleCharAndReturnLength = (): number => {
+let processDataAfterRemovingSameUnitsOfSingleCharAndReturnLength = (
+  result: string[]
+): number => {
   do {
     matched = false;
-    removeDuplicates(result);
-    result = result.filter(Boolean);
+    result = removeDuplicates(result).filter(Boolean);
   } while (matched);
   return result.length;
 };
@@ -88,7 +91,9 @@ let AtoZ = range("a", "z");
 
 for (const alphabet of AtoZ) {
   result = removeAllOccurrencesOfValue(result, alphabet);
-  lengths.push(processDataAfterRemovingSameUnitsOfSingleCharAndReturnLength());
+  lengths.push(
+    processDataAfterRemovingSameUnitsOfSingleCharAndReturnLength(result)
+  );
   result = data;
 }
 
