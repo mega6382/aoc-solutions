@@ -1,0 +1,14 @@
+{
+  "name": "express-server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "day5p1": "ts-node \"Day 5/Day5.1.ts\"",
+    "day5p2": "ts-node \"Day 5/Day5.2.ts\""
+  },
+  "devDependencies": {
+    "@types/node": "^10.1.3",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.8.3"
+  }
+}
